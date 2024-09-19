@@ -1,0 +1,91 @@
+.div-fullscreen {
+    height: 86vh;
+    background-image: url('../../../assets/fondollanta.png'); 
+    background-size: cover; 
+    background-position: center; 
+}
+
+.container {
+    width: 10%;
+    margin: auto;
+    text-align: center;
+    max-width: 200px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 5vw;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-height: 10px;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 10px;
+}
+
+.outer-section {
+    background-color: white;
+    border-radius: 10px;
+    padding: 5vw;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 2px solid black;
+    margin: 2vw;
+    max-width: 430px;
+    overflow: auto;
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section img {
+    width: 20%;
+    height: auto;
+}
+
+.section h2 {
+    margin: 0;
+    font-size: 2vw;
+}
+
+.section p {
+    margin: 0;
+    font-size: 1.6vw;
+}
+
+@media screen and (max-width: 7l68px) {
+    .container {
+        width: 95%;
+    }
+
+    .outer-section {
+        padding: 3vw;
+    }
+
+    .section h2 {
+        font-size: 3vw;
+    }
+
+    .section p {
+        font-size: 2.4vw;
+    }
+}
+
+.button-regresar {
+    background-color: red;
+    color: white;
+    border: 2px solid darkred;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button-regresar:hover {
+    background-color: darkred;
+}

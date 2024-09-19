@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificar Codigo</title>
+</head>
+<body>
+
+    <div class="super-contenedor">
+        <div class="alert alert-success mt-2" *ngIf="message" style="width: 50%; margin: auto;">
+            {{ message }}
+        </div>
+        <div class="contenedor" style="border: 3px solid black;" >
+            <h1>Verifica tu codigo</h1>
+            <div class="text">
+                <h4>Registra el código de 6 digitos que se envió a tu correo</h4>
+            </div>
+            <form >
+                <input type="text" placeholder="Ingrese el código: ######" name="codigo" id="codigo" class="form-control" style="border: 1px solid black;" [(ngModel)]="codigo">                <div class="alert alert-warning mt-2" *ngIf="errorMsg" style="width: 50%; margin: auto;">
+                    {{ errorMsg }}
+                </div>
+                <button type="submit" class="btn btn-danger" style="color: white; font-weight: bold;" (click)="verificar()">Verificar</button>            </form>
+        </div>
+    </div>
+
+</body>
+</html>

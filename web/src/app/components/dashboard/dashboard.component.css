@@ -1,0 +1,44 @@
+.red-navbar {
+    background-color: rgb(0, 204, 255)  !important;
+    text-align: center;
+}
+.body
+{
+    background-color: black;
+}
+.div-fullscreen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 88vh;
+    background-image: url('../../../assets/fondollanta.png'); 
+    background-size: cover; 
+    background-position: center; 
+}
+
+
+.carousel {
+    width: 80%; 
+    margin: 0 auto; 
+    border: 1px solid #ccc; 
+    overflow: hidden; 
+}
+.carousel-item {
+    text-align: center; 
+}
+
+
+.carousel-item img {
+    width: 80%;
+    height: 80vh;
+    border: 1px solid #ccc; /* Borde para visualizar los límites de la imagen */
+}
+
+.carousel-inner {
+    height: 500px; /* Altura del carrusel */
+}
+
+.carousel-control-prev, .carousel-control-next {
+    top: 50%; 
+    transform: translateY(-50%);
+}

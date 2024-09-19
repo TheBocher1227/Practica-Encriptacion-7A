@@ -1,0 +1,63 @@
+<div class="div-fullscreen">
+    <br><br>
+    <button  class="button-regresar"   (click)="regresar()">Regresar </button>
+    <br><br><br>
+    <div class="row">
+        <div class="outer-section">
+            <div class="section">
+                <img src="assets/icons8-velocímetro-96.png" alt="Icono 1">
+                <h2>{{ registros[4]?.nombre }}</h2>
+                <p>{{ registros[4]?.data?.data }} {{ registros[4]?.unidad }}</p>
+            </div>
+        </div>
+        <div class="outer-section">
+            <div class="section">
+                <img src="assets/inclinacion.jpg" alt="Icono 2">
+                <h2>{{ registros[6]?.nombre }}</h2>
+                <p>{{ registros[6]?.unidad }} {{ registros[6]?.data?.data }} </p>
+            </div>
+        </div>
+        <div class="outer-section">
+            <div class="section">
+                <img src="assets/imagen_2024-04-11_231113703-removebg-preview.png" alt="Icono 3">
+                <h2>{{ registros[5]?.nombre }}</h2>
+                <p>{{ registros[5]?.data?.data }} {{ registros[5]?.unidad }}</p>
+            </div>
+        </div>
+    </div>
+    <br><br><br>
+    <div class="row">
+        <div class="outer-section">
+            <div class="section">
+                <img src="assets/distancia.png" alt="Icono 1">
+                <h2>{{ registros[2]?.nombre }}</h2>
+                <p>{{ registros[2]?.data?.data }} {{ registros[2]?.unidad }}</p>
+            </div>
+        </div>
+        <div class="outer-section">
+            <div class="section">
+                <img src="assets/temperatura.png" alt="Icono 2">
+                <h2>{{ registros[0]?.nombre }}</h2>
+                <p>{{ registros[0]?.data?.data }} {{ registros[0]?.unidad }}</p>
+                <h2>{{ registros[1]?.nombre }}</h2>
+                <p>{{ registros[1]?.data?.data }} {{ registros[1]?.unidad }}</p>
+            </div>
+        </div>
+        <div class="outer-section">
+            <div class="section">
+                <img src="assets/sensor-de-luz-de-celda-solar.png" alt="Icono 3">
+                <h2>{{ registros[3]?.nombre }}</h2>
+                <p>{{ registros[3]?.data?.data }} {{ registros[3]?.unidad }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" *ngIf="registros && registros.length > 0">
+        <div class="outer-section">
+            <div class="section">
+                <label for="switch">Enviar Valor:</label>
+                <input type="checkbox" id="switch" (change)="enviarValor($event)">
+            </div>
+        </div>
+    </div>
+</div>

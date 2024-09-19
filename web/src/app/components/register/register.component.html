@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar sesión</title>
+</head>
+<body>
+    
+    <div class="container" style="border: 3px solid rgb(255, 0, 0);">
+        <div class="form-container">
+            <form class="form" [formGroup]="form">
+                <div class="alert alert-success fade show" role="alert" *ngIf="msg">
+                    {{ msg }}
+                </div>
+                <div class="alert alert-danger fade show" role="alert" *ngIf="errorMsg">
+                    {{ errorMsg }}
+                </div>
+                <h1>Registrate</h1>
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="floatingUser" formControlName="usuario" placeholder="Nombre de usuario" [class.is-invalid]="usuario.invalid && (usuario.dirty || usuario.touched)">
+                    <label for="floatingUser">Nombre</label>
+
+                    <div [hidden]="usuario.valid || usuario.pristine">
+                        <span class="text-danger" *ngIf="usuario.errors?.['required']">Este campo es obligatorio</span>
+                        <span class="text-danger" *ngIf="usuario.errors?.['maxlength']">El máximo de caracteres es 30</span>
+                    </div>
+                    <div *ngIf="errorMsg">
+                        <span class="text-danger" *ngFor="let error of nameError">{{error}}</span>
+                    </div>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="floatingMail" formControlName="email" placeholder="name@example.com" [class.is-invalid]="email.invalid && (email.dirty || email.touched)">
+                    <label for="floatingMail">Correo electronico</label>
+
+                    <div [hidden]="email.valid || email.pristine">
+                        <span class="text-danger" *ngIf="email.errors?.['required']">Este campo es obligatorio</span>
+                        <span class="text-danger" *ngIf="email.errors?.['email']">El texto debe cumplir un formato de correo</span>
+                    </div>
+                    
+                    <div *ngIf="errorMsg">
+                        <span class="text-danger" *ngFor="let error of emailError">{{error}}</span>
+                    </div>
+                </div>
+                <div class="form-floating">
+                    <input type="password" class="form-control" id="floatingPassword" formControlName="password" placeholder="Password" [class.is-invalid]="password.invalid && (password.dirty || password.touched)">
+                    <label for="floatingPassword">Contraseña</label>
+
+                    <div [hidden]="password.valid || password.pristine">
+                        <span class="text-danger" *ngIf="password.errors?.['required']">Este campo es obligatorio</span>
+                        <span class="text-danger" *ngIf="password.errors?.['minlength']">Debe de tener un minimo de 8 digitos</span>
+                    </div>
+
+                    <div *ngIf="errorMsg">
+                        <span class="text-danger" *ngFor="let error of passwordError">{{error}}</span>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-warning mt-2" style="width: 100%; margin: auto; background-color: #CB1D0D; border-radius: 20px; font-weight: bold; color: white;" [disabled]="form.invalid" (click)="registrar()">Iniciar</button>                <p class="mt-3">¿Ya estás registrado? <a routerLink="">Inicia sesión</a></p>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

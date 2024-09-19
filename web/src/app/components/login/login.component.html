@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar sesión</title>
+</head>
+<div class="alert alert-danger fade show" role="alert" *ngIf="errorMsg">
+   <h3>Por favor verifica tus credenciales</h3>
+</div>
+<div class="alert alert-danger fade show" role="alert" *ngIf="error">
+    {{ error }}
+</div>
+<body>
+    <div class="container" style="border: 3px solid rgb(255, 0, 0)"> <div class="form-container">
+            <form class="form" [formGroup]="form">
+                <div class="alert alert-success fade show" role="alert" *ngIf="msg.msg != ''">
+                    {{ msg.msg }}
+                </div>
+                <h1>Iniciar sesión</h1>
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="floatingMail" formControlName="email" placeholder="name@example.com" [class.is-invalid]="email.invalid && (email.dirty || email.touched)">
+                    <label for="floatingInput">Correo electronico</label>
+
+                    <div [hidden]="email.valid || email.pristine">
+                        <span class="text-danger" *ngIf="email.errors?.['required']">Este campo es obligatorio</span>
+                        <span class="text-danger" *ngIf="email.errors?.['email']">El texto debe cumplir un formato de correo</span>
+                    </div>
+
+                </div>
+                <div class="form-floating">
+                    <input type="password" class="form-control" id="floatingPassword" formControlName="password" placeholder="Password" [class.is-invalid]="password.invalid && (password.dirty || password.touched)">
+                    <label for="floatingPassword">Contraseña</label>
+                </div>
+                <div [hidden]="password.valid || password.pristine">
+                    <span class="text-danger" *ngIf="password.errors?.['required']">Este campo es obligatorio</span>
+                    <span class="text-danger" *ngIf="password.errors?.['minlength']">Debe de tener un minimo de 8 digitos</span>
+                </div>
+
+                <button type="submit" class="btn btn-danger mt-2" style="width: 100%; margin: auto; background-color: #CB1D0D; border-radius: 20px; font-weight: bold; color: white;" [disabled]="form.invalid" (click)="Login()">Enviar</button>               
+                <p class="mt-3" style="text-align: center;">¿No tienes cuenta? <a routerLink="/register">Registrate</a></p>            </form>
+        </div>
+    </div>
+
+</body>
+</html>

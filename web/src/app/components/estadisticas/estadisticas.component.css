@@ -1,0 +1,26 @@
+.estadistica {
+    display: flex;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 50%;
+    margin: auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    justify-content: space-around;
+}
+
+.partidas{
+    text-align: center;
+    border-right: 1px solid black;
+    width: 25%;
+}
+.barcos{
+    text-align: center;
+    border-right: 1px solid black;
+    width: 25%;
+}
+.rival{
+    text-align: center;
+    width: 25%;
+
+}

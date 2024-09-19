@@ -1,0 +1,39 @@
+<!-- mislogs.component.html -->
+<select class="form-control" [(ngModel)]="tipoSensorSeleccionado" (change)="filtrarPorTipoSensor()">
+  <option value="">Todos los sensores</option>
+  <option *ngFor="let tipo of tiposSensor" [value]="tipo">{{ tipo }}</option>
+</select>
+
+<button class="btn-salir" (click)="salir()">Salir</button>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Clave</th>
+      <th>UUID</th>
+      <th>Tipo de Sensor</th>
+      <th>Número de Serie</th>
+      <th>Dato</th>
+      <th>Fecha</th>
+      <th>Hora</th>
+      <th>Descripción</th>
+      <th>Nombre</th>
+      <th>Unidad</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let log of registrosFiltrados | paginate: { itemsPerPage: 50, currentPage: p }">
+      <td>{{ log.clave }}</td>
+      <td>{{ log.data.uuid }}</td>
+      <td>{{ log.data.tipo_sensor }}</td>
+      <td>{{ log.data.numero_serie }}</td>
+      <td>{{ log.data.data }}</td>
+      <td>{{ log.data.fecha }}</td>
+      <td>{{ log.data.hora }}</td>
+      <td>{{ log.descripcion }}</td>
+      <td>{{ log.nombre }}</td>
+      <td>{{ log.unidad }}</td>
+    </tr>
+  </tbody>
+</table>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>

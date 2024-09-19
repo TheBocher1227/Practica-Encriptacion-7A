@@ -1,0 +1,9 @@
+<div class="main-container">
+    <h1>Logs de las estaciones</h1>
+    <div class="estaciones-container">
+      <div class="estacion-item" *ngFor="let estacion of estaciones" (click)="seleccionarEstacion(estacion.estacion_id)">
+        <img src="assets/sensoricono.png" alt="Icono Estación">
+        <span>{{ estacion.estacion_id }}</span>
+      </div>
+    </div>
+  </div>
