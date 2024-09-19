@@ -11,7 +11,7 @@ import { authGuard } from './guards/auth.guard';
 import { SensoresComponent } from './components/sensores/sensores.component';
 
 export const routes: Routes = [
-    { path: '', redirectTo: 'login', pathMatch: 'full' },
+    { path: '', redirectTo: 'sensores', pathMatch: 'full' },
     { path: 'login', component: LoginComponent },
     { path: 'verificar-codigo', component: CodigoComponent},
     { path: 'register', component: RegisterComponent },
