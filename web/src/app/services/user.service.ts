@@ -19,6 +19,4 @@ export class UserService {
     return this.http.get<User>(this.dataURL)
   }
 
-  // getBatallas(): Observable<>
-
 }

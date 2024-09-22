@@ -2,6 +2,7 @@
 
 
 use App\Http\Controllers\BarcosController;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\JuegosController;
 use App\Http\Controllers\SensoresController;
 use App\Mail\ValidatorEmail;
@@ -100,7 +101,7 @@ Route::get('obtenerestaciones',[SensoresController::class,'obtenerestaciones']);
 Route::post('obtenerRegistrosPorEstacion/{id}',[SensoresController::class,'obtenerRegistrosPorEstacion']);
 Route::post('guardarRelacionEstacion',[SensoresController::class,'guardarRelacionEstacion']);
 
-
+Route::post('chat', [ChatController::class, 'store']);
 
 
 
