@@ -12,35 +12,53 @@
     {{ error }}
 </div>
 <body>
-    <div class="container" style="border: 3px solid rgb(255, 0, 0)"> <div class="form-container">
-            <form class="form" [formGroup]="form">
-                <div class="alert alert-success fade show" role="alert" *ngIf="msg.msg != ''">
-                    {{ msg.msg }}
+    <section class="bg-white dark:bg-gray-900">
+        <div class="container px-6 py-32 mx-auto lg:py-48">
+            <div class="lg:flex">
+                <div class="lg:w-1/2">
+                    <img class="w-auto h-7 sm:h-8" src="https://i.pinimg.com/originals/8c/9b/d6/8c9bd664b100d4e9b72652498d37beae.jpg" alt="">
+                    <h1 class="mt-4 text-black dark:text-gray-300 md:text-lg">Bienvenido de vuelva</h1>
+                    <h1 class="mt-4 text-2xl font-medium text-black capitalize lg:text-3xl dark:text-white">
+                        Inicia sesión en tu cuenta
+                    </h1>
                 </div>
-                <h1>Iniciar sesión</h1>
-                <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="floatingMail" formControlName="email" placeholder="name@example.com" [class.is-invalid]="email.invalid && (email.dirty || email.touched)">
-                    <label for="floatingInput">Correo electronico</label>
-
-                    <div [hidden]="email.valid || email.pristine">
-                        <span class="text-danger" *ngIf="email.errors?.['required']">Este campo es obligatorio</span>
-                        <span class="text-danger" *ngIf="email.errors?.['email']">El texto debe cumplir un formato de correo</span>
-                    </div>
-
+                <div class="mt-8 lg:w-1/2 lg:mt-0">
+                    <form class="w-full lg:max-w-xl" [formGroup]="form">
+                        <div class="alert alert-success fade show" role="alert" *ngIf="msg.msg != ''">
+                            {{ msg.msg }}
+                        </div>
+                        <div class="relative flex flex-col items-start">
+                            <span class="absolute left-3 top-1/2 transform -translate-y-1/2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-300 dark:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                </svg>
+                            </span>
+                            <input id="email" name="email" type="email" autocomplete="email" formControlName="email" required class="block w-full py-3 text-gray-700 bg-white border rounded-lg pl-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Correo electrónico" [class.is-invalid]="email.invalid && (email.dirty || email.touched)">
+                            <div [hidden]="email.valid || email.pristine" class="w-full mt-1">
+                                <span class="text-danger" *ngIf="email.errors?.['required']">Este campo es obligatorio</span>
+                                <span class="text-danger" *ngIf="email.errors?.['email']">El texto debe cumplir un formato de correo</span>
+                            </div>
+                        </div>
+                        <div class="relative flex flex-col items-start mt-4">
+                            <span class="absolute left-3 top-1/2 transform -translate-y-1/2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-300 dark:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                                </svg>
+                            </span>
+                            <input id="password" name="password" type="password" autocomplete="current-password" formControlName="password" required class="block w-full px-10 py-3 text-gray-700 bg-white border rounded-lg dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Contraseña" [class.is-invalid]="password.invalid && (password.dirty || password.touched)">
+                            <div [hidden]="password.valid || password.pristine" class="w-full mt-1">
+                                <span class="text-danger" *ngIf="password.errors?.['required']">Este campo es obligatorio</span>
+                                <span class="text-danger" *ngIf="password.errors?.['minlength']">Debe de tener un mínimo de 8 dígitos</span>
+                            </div>
+                        </div>
+                        <div class="mt-8 md:flex md:items-center">
+                            <button type="submit" class="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-lg md:w-1/2 hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50" [disabled]="form.invalid" (click)="Login()">Iniciar sesion</button>
+                            <a href="/register" class="inline-block mt-4 text-center text-blue-500 md:mt-0 md:mx-6 hover:underline dark:text-blue-400">¿Aun no tienes una cuenta?</a>
+                        </div>
+                    </form>
                 </div>
-                <div class="form-floating">
-                    <input type="password" class="form-control" id="floatingPassword" formControlName="password" placeholder="Password" [class.is-invalid]="password.invalid && (password.dirty || password.touched)">
-                    <label for="floatingPassword">Contraseña</label>
-                </div>
-                <div [hidden]="password.valid || password.pristine">
-                    <span class="text-danger" *ngIf="password.errors?.['required']">Este campo es obligatorio</span>
-                    <span class="text-danger" *ngIf="password.errors?.['minlength']">Debe de tener un minimo de 8 digitos</span>
-                </div>
-
-                <button type="submit" class="btn btn-danger mt-2" style="width: 100%; margin: auto; background-color: #CB1D0D; border-radius: 20px; font-weight: bold; color: white;" [disabled]="form.invalid" (click)="Login()">Enviar</button>               
-                <p class="mt-3" style="text-align: center;">¿No tienes cuenta? <a routerLink="/register">Registrate</a></p>            </form>
+            </div>
         </div>
-    </div>
-
+    </section>
 </body>
 </html>

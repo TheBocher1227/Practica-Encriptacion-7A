@@ -3,63 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar sesión</title>
+    <title>Registro</title>
 </head>
 <body>
-    
-    <div class="container" style="border: 3px solid rgb(255, 0, 0);">
-        <div class="form-container">
-            <form class="form" [formGroup]="form">
-                <div class="alert alert-success fade show" role="alert" *ngIf="msg">
-                    {{ msg }}
-                </div>
-                <div class="alert alert-danger fade show" role="alert" *ngIf="errorMsg">
-                    {{ errorMsg }}
-                </div>
-                <h1>Registrate</h1>
-                <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="floatingUser" formControlName="usuario" placeholder="Nombre de usuario" [class.is-invalid]="usuario.invalid && (usuario.dirty || usuario.touched)">
-                    <label for="floatingUser">Nombre</label>
-
-                    <div [hidden]="usuario.valid || usuario.pristine">
-                        <span class="text-danger" *ngIf="usuario.errors?.['required']">Este campo es obligatorio</span>
-                        <span class="text-danger" *ngIf="usuario.errors?.['maxlength']">El máximo de caracteres es 30</span>
-                    </div>
-                    <div *ngIf="errorMsg">
-                        <span class="text-danger" *ngFor="let error of nameError">{{error}}</span>
+    <div class="bg-white dark:bg-gray-900">
+        <div class="flex justify-center h-screen">
+            <div class="hidden bg-cover lg:block lg:w-2/3" style="background-image: url(https://images.unsplash.com/photo-1616763355603-9755a640a287?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80)">
+                <div class="flex items-center h-full px-20 bg-gray-900 bg-opacity-40">
+                    <div>
+                        <h2 class="text-2xl font-bold text-white sm:text-3xl">Tecno Truck</h2>
+                        <p class="max-w-xl mt-3 text-gray-300">
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. In
+                            autem ipsa, nulla laboriosam dolores, repellendus perferendis libero suscipit nam temporibus
+                            molestiae
+                        </p>
                     </div>
                 </div>
-                <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="floatingMail" formControlName="email" placeholder="name@example.com" [class.is-invalid]="email.invalid && (email.dirty || email.touched)">
-                    <label for="floatingMail">Correo electronico</label>
+            </div>
 
-                    <div [hidden]="email.valid || email.pristine">
-                        <span class="text-danger" *ngIf="email.errors?.['required']">Este campo es obligatorio</span>
-                        <span class="text-danger" *ngIf="email.errors?.['email']">El texto debe cumplir un formato de correo</span>
+            <div class="flex items-center w-full max-w-md px-6 mx-auto lg:w-2/6">
+                <div class="flex-1">
+                    <div class="text-center">
+                        <div class="flex justify-center mx-auto">
+                            <img class="w-auto h-7 sm:h-8" src="https://i.pinimg.com/originals/8c/9b/d6/8c9bd664b100d4e9b72652498d37beae.jpg" alt="">
+                        </div>
+                        <p class="mt-3 text-black dark:text-gray-300">Regístrate para acceder a tu cuenta</p>
                     </div>
-                    
-                    <div *ngIf="errorMsg">
-                        <span class="text-danger" *ngFor="let error of emailError">{{error}}</span>
+
+                    <div class="mt-8">
+                        <form [formGroup]="form">
+
+                            <div>
+                                <label for="usuario" class="block mb-2 text-sm text-black dark:text-gray-200">Usuario</label>
+                                <input type="text" name="usuario" id="usuario" placeholder="Tu Usuario" class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" formControlName="usuario" required />
+                                <br>
+                            </div>
+
+                            <div>
+                                <label for="email" class="block mb-2 text-sm text-black dark:text-gray-200">Correo Electrónico</label>
+                                <input type="email" name="email" id="email" placeholder="example@example.com" class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" formControlName="email" required />
+                                <div *ngIf="emailError?.length" class="mt-1 text-red-500">
+                                    <span *ngFor="let error of emailError">{{ error }}</span>
+                                </div>
+                            </div>
+
+                            <div class="mt-6">
+                                <div class="flex justify-between mb-2">
+                                    <label for="password" class="text-sm text-black dark:text-gray-200">Contraseña</label>
+                                    
+                                </div>
+                                <input type="password" name="password" id="password" placeholder="Tu Contraseña" class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg dark:placeholder-gray-600 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-700 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" formControlName="password" required />
+                                <div *ngIf="passwordError?.length" class="mt-1 text-red-500">
+                                    <span *ngFor="let error of passwordError">{{ error }}</span>
+                                </div>
+                            </div>
+
+                            <div class="mt-6">
+                                <button type="button" (click)="registrar()" class="w-full px-4 py-2 tracking-wide text-white transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:bg-blue-400 focus:ring focus:ring-blue-300 focus:ring-opacity-50">
+                                    Registrarse
+                                </button>
+                            </div>
+                        </form>
+
+                        <p class="mt-6 text-sm text-center text-gray-400">¿No tienes una cuenta aún? <a href="#" class="text-blue-500 focus:outline-none focus:underline hover:underline">Inicia sesión</a>.</p>
                     </div>
                 </div>
-                <div class="form-floating">
-                    <input type="password" class="form-control" id="floatingPassword" formControlName="password" placeholder="Password" [class.is-invalid]="password.invalid && (password.dirty || password.touched)">
-                    <label for="floatingPassword">Contraseña</label>
-
-                    <div [hidden]="password.valid || password.pristine">
-                        <span class="text-danger" *ngIf="password.errors?.['required']">Este campo es obligatorio</span>
-                        <span class="text-danger" *ngIf="password.errors?.['minlength']">Debe de tener un minimo de 8 digitos</span>
-                    </div>
-
-                    <div *ngIf="errorMsg">
-                        <span class="text-danger" *ngFor="let error of passwordError">{{error}}</span>
-                    </div>
-                </div>
-
-                <button type="submit" class="btn btn-warning mt-2" style="width: 100%; margin: auto; background-color: #CB1D0D; border-radius: 20px; font-weight: bold; color: white;" [disabled]="form.invalid" (click)="registrar()">Iniciar</button>                <p class="mt-3">¿Ya estás registrado? <a routerLink="">Inicia sesión</a></p>
-            </form>
+            </div>
         </div>
     </div>
-
 </body>
 </html>

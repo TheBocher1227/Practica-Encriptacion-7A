@@ -44,9 +44,10 @@ export class RegisterComponent {
         this.errorMsg = null
         this.msg = response.msg
 
-        setTimeout(() => {
-          this.router.navigate(['/login'])
-        }, 1500)
+        alert('Cuenta registrada. Por favor, activa tu cuenta desde tu correo.');
+
+        // Redirigir al login después de cerrar el popup
+        this.router.navigate(['/login']);
       }, (error) => {
         this.msg = null
         console.log(error)

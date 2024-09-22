@@ -3,24 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verificar Codigo</title>
+    <title>Verificar Código</title>
+    >
 </head>
-<body>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
 
-    <div class="super-contenedor">
-        <div class="alert alert-success mt-2" *ngIf="message" style="width: 50%; margin: auto;">
+    <div class="container mx-auto p-4">
+        
+        <div class="border-3  rounded-lg p-6 bg-white shadow-md">
+            <div class="alert alert-success mt-2 w-1/2" role="alert" *ngIf="message">
             {{ message }}
         </div>
-        <div class="contenedor" style="border: 3px solid black;" >
-            <h1>Verifica tu codigo</h1>
-            <div class="text">
-                <h4>Registra el código de 6 digitos que se envió a tu correo</h4>
+            <h1 class="text-center text-2xl font-semibold">Verifica tu código</h1>
+            <div class="text-center">
+                <h4 class="mt-2 text-lg">Registra el código de 6 dígitos que se envió a tu correo</h4>
             </div>
-            <form >
-                <input type="text" placeholder="Ingrese el código: ######" name="codigo" id="codigo" class="form-control" style="border: 1px solid black;" [(ngModel)]="codigo">                <div class="alert alert-warning mt-2" *ngIf="errorMsg" style="width: 50%; margin: auto;">
-                    {{ errorMsg }}
-                </div>
-                <button type="submit" class="btn btn-danger" style="color: white; font-weight: bold;" (click)="verificar()">Verificar</button>            </form>
+            <form class="text-center mt-6" (ngSubmit)="verificar()">
+    <input type="text" placeholder="Ingrese el código: ######" name="codigo" id="codigo" class="border border-gray-300 rounded-lg py-2 px-4 w-1/2 mx-auto focus:outline-none focus:ring-2 focus:ring-blue-500 block" [(ngModel)]="codigo" required>
+    
+    <button type="submit" class="bg-blue-500 text-white font-bold py-2 px-4 rounded-lg w-1/2 mx-auto mt-4 hover:bg-blue-400 transition duration-200 block">Verificar</button>
+    
+</form>
+
+    <a href="/login" class="bg-blue-500 text-white font-bold py-2 px-4 rounded-lg w-1/2 mx-auto mt-4 block text-center hover:bg-blue-400 transition duration-200">Regresar al Login</a>
+    <div class="alert alert-warning mt-2 w-1/2 mx-auto" role="alert" *ngIf="errorMsg">
+        {{ errorMsg }}
+    </div>     
         </div>
     </div>
 
